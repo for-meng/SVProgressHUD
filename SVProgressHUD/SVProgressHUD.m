@@ -87,13 +87,12 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         // If a window has not been returned by now, the first scene's window is returned (regardless of activationState).
         UIWindowScene *windowScene = (UIWindowScene *)[[UIApplication sharedApplication].connectedScenes allObjects].firstObject;
         return windowScene.windows.firstObject;
-    } else {
-#if TARGET_OS_IOS
-        return [[[UIApplication sharedApplication] delegate] window];
-#else
-        return [UIApplication sharedApplication].keyWindow;
-#endif
     }
+#if TARGET_OS_IOS
+    return [[[UIApplication sharedApplication] delegate] window];
+#else
+    return [UIApplication sharedApplication].keyWindow;
+#endif
 }
 #endif
 
